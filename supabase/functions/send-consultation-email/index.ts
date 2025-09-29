@@ -1,5 +1,4 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
 const corsHeaders = {
@@ -61,8 +60,8 @@ const handler = async (req: Request): Promise<Response> => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Dev Studio <onboarding@resend.dev>",
-        to: ["developer@devstudio.com"], // Replace with your actual email
+        from: "Syntax Studio <onboarding@resend.dev>",
+        to: ["kafuiakakpo1@gmail.com"], // Replace with your actual email
         subject: `New Project Consultation from ${name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
