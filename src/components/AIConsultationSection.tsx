@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Bot, Send, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Message {
   id: string;
@@ -70,7 +71,7 @@ const AIConsultationSection = () => {
     return responses[Math.min(messages.length, responses.length - 1)];
   };
 
-  const handleSubmitConsultation = () => {
+  const handleSubmitConsultation = async () => {
     if (!userInfo.name || !userInfo.email) {
       toast({
         title: "Missing Information",
@@ -80,17 +81,51 @@ const AIConsultationSection = () => {
       return;
     }
 
-    // Here you would normally send the consultation data to your backend
-    toast({
-      title: "Thank You!",
-      description: "Your consultation has been submitted. We'll be in touch within 24 hours.",
-    });
+    try {
+      // Save to database
+      const { error } = await supabase.from("consultations").insert([{
+        name: userInfo.name,
+        email: userInfo.email,
+        company: userInfo.company,
+        conversation_messages: JSON.parse(JSON.stringify(messages)),
+      }]);
 
-    toast({
-      title: "Backend Required",
-      description: "To enable email functionality, connect this project to Supabase to handle the backend logic.",
-      variant: "destructive"
-    });
+      if (error) throw error;
+
+      // Send email notification
+      await supabase.functions.invoke("send-consultation-email", {
+        body: {
+          name: userInfo.name,
+          email: userInfo.email,
+          company: userInfo.company,
+          conversationMessages: messages,
+        },
+      });
+
+      toast({
+        title: "Thank You!",
+        description: "Your consultation has been submitted. We'll be in touch within 24 hours.",
+      });
+
+      // Reset form
+      setUserInfo({ name: "", email: "", company: "" });
+      setMessages([
+        {
+          id: '1',
+          type: 'ai',
+          content: "Hello! I'm your AI development consultant. Tell me about your project idea - what do you want to build? I'll help gather all the details and connect you with our development team.",
+          timestamp: new Date()
+        }
+      ]);
+      setShowContactForm(false);
+    } catch (error) {
+      console.error("Error submitting consultation:", error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
