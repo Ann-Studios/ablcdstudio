@@ -60,7 +60,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Syntax Studio <onboarding@resend.dev>",
+        from: "ABLCD Studio <onboarding@resend.dev>",
         to: ["kafuiakakpo1@gmail.com"], // Replace with your actual email
         subject: `New Project Consultation from ${name}`,
         html: `
