@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Bot, Send, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 interface Message {
   id: string;
@@ -22,12 +23,12 @@ interface Message {
 }
 
 const AIConsultationSection = () => {
+  const { t } = useI18n();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
       type: "ai",
-      content:
-        "Hello! I'm your AI development consultant. Tell me about your project idea - what do you want to build? I'll help gather all the details and connect you with our development team.",
+      content: t('ai.initialMessage'),
       timestamp: new Date(),
     },
   ]);
@@ -90,26 +91,26 @@ const AIConsultationSection = () => {
 
   const generateAIResponse = (userInput: string, messageCount: number): string => {
     if (messageCount === 1) {
-      return "That sounds like an interesting project! What's your timeline for this project? And do you have any specific technology preferences?";
+      return t('ai.prompts.afterProjectType');
     }
     if (messageCount === 3) {
-      return "Great! What's your budget range for this project?";
+      return t('ai.prompts.afterTimeline');
     }
     if (messageCount === 5) {
-      return "Perfect! Can you describe the main goals or features you want in this project?";
+      return t('ai.prompts.afterBudget');
     }
     if (messageCount >= 7) {
-      return "Thanks! Please provide your contact information so our team can reach out with a proposal.";
+      return t('ai.prompts.thanks');
     }
 
-    return "Can you tell me more about your project?";
+    return t('ai.prompts.askMore');
   };
 
   const handleSubmitConsultation = async () => {
     if (!userInfo.name || !userInfo.email) {
       toast({
-        title: "Missing Information",
-        description: "Please provide your name and email address.",
+        title: t('ai.toast.missingInfoTitle'),
+        description: t('ai.toast.missingInfoDesc'),
         variant: "destructive",
       });
       return;
@@ -144,9 +145,8 @@ const AIConsultationSection = () => {
       });
 
       toast({
-        title: "Thank You!",
-        description:
-          "Your consultation has been submitted. We'll be in touch within 24 hours.",
+        title: t('ai.toast.successTitle'),
+        description: t('ai.toast.successDesc'),
       });
 
       // Reset state
@@ -161,8 +161,7 @@ const AIConsultationSection = () => {
         {
           id: "1",
           type: "ai",
-          content:
-            "Hello! I'm your AI development consultant. Tell me about your project idea - what do you want to build? I'll help gather all the details and connect you with our development team.",
+          content: t('ai.initialMessage'),
           timestamp: new Date(),
         },
       ]);
@@ -170,8 +169,8 @@ const AIConsultationSection = () => {
     } catch (error) {
       console.error("Error submitting consultation:", error);
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: t('ai.toast.errorTitle'),
+        description: t('ai.toast.errorDesc'),
         variant: "destructive",
       });
     }
@@ -185,10 +184,10 @@ const AIConsultationSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
-            AI Project Consultation
+            {t('ai.sectionTitle')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Describe your project to our AI assistant and get instant feedback
+            {t('ai.sectionSubtitle')}
           </p>
         </div>
 
@@ -197,10 +196,10 @@ const AIConsultationSection = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Bot className="w-5 h-5 text-primary" />
-                Development Consultation Chat
+                {t('ai.chatTitle')}
               </CardTitle>
               <CardDescription>
-                Tell us about your project requirements, timeline, and goals
+                {t('ai.chatDescription')}
               </CardDescription>
             </CardHeader>
 
@@ -240,7 +239,7 @@ const AIConsultationSection = () => {
               {/* Message Input */}
               <div className="flex gap-2">
                 <Textarea
-                  placeholder="Describe your project idea..."
+                  placeholder={t('ai.inputPlaceholder')}
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={(e) =>
@@ -264,11 +263,11 @@ const AIConsultationSection = () => {
               {showContactForm && (
                 <div className="mt-8 p-6 bg-card/30 rounded-lg border border-border/20">
                   <h3 className="text-lg font-semibold mb-4">
-                    Let's Get You Connected
+                    {t('ai.contact.heading')}
                   </h3>
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <Label htmlFor="name">Name *</Label>
+                      <Label htmlFor="name">{t('ai.contact.name')}</Label>
                       <Input
                         id="name"
                         value={userInfo.name}
@@ -282,7 +281,7 @@ const AIConsultationSection = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="email">Email *</Label>
+                      <Label htmlFor="email">{t('ai.contact.email')}</Label>
                       <Input
                         id="email"
                         type="email"
@@ -298,7 +297,7 @@ const AIConsultationSection = () => {
                     </div>
                   </div>
                   <div className="mb-4">
-                    <Label htmlFor="company">Company</Label>
+                    <Label htmlFor="company">{t('ai.contact.company')}</Label>
                     <Input
                       id="company"
                       value={userInfo.company}
@@ -316,7 +315,7 @@ const AIConsultationSection = () => {
                     variant="hero"
                     className="w-full"
                   >
-                    Submit Consultation Request
+                    {t('ai.contact.submit')}
                   </Button>
                 </div>
               )}

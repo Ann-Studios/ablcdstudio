@@ -63,6 +63,38 @@ const translations: Record<Language, Dict> = {
       subtitle: "Oops! Page not found",
       back: "Return to Home",
     },
+    ai: {
+      sectionTitle: "AI Project Consultation",
+      sectionSubtitle: "Describe your project to our AI assistant and get instant feedback",
+      chatTitle: "Development Consultation Chat",
+      chatDescription: "Tell us about your project requirements, timeline, and goals",
+      initialMessage:
+        "Hello! I'm your AI development consultant. Tell me about your project idea - what do you want to build? I'll help gather all the details and connect you with our development team.",
+      prompts: {
+        afterProjectType:
+          "That sounds like an interesting project! What's your timeline for this project? And do you have any specific technology preferences?",
+        afterTimeline: "Great! What's your budget range for this project?",
+        afterBudget: "Perfect! Can you describe the main goals or features you want in this project?",
+        thanks: "Thanks! Please provide your contact information so our team can reach out with a proposal.",
+        askMore: "Can you tell me more about your project?",
+      },
+      inputPlaceholder: "Describe your project idea...",
+      contact: {
+        heading: "Let's Get You Connected",
+        name: "Name *",
+        email: "Email *",
+        company: "Company",
+        submit: "Submit Consultation Request",
+      },
+      toast: {
+        missingInfoTitle: "Missing Information",
+        missingInfoDesc: "Please provide your name and email address.",
+        successTitle: "Thank You!",
+        successDesc: "Your consultation has been submitted. We'll be in touch within 24 hours.",
+        errorTitle: "Error",
+        errorDesc: "Something went wrong. Please try again.",
+      },
+    },
   },
   fr: {
     hero: {
@@ -128,6 +160,38 @@ const translations: Record<Language, Dict> = {
     notFound: {
       subtitle: "Oups ! Page non trouvée",
       back: "Retour à l'accueil",
+    },
+    ai: {
+      sectionTitle: "Consultation de projet avec IA",
+      sectionSubtitle: "Décrivez votre projet à notre assistant IA et obtenez un retour instantané",
+      chatTitle: "Discussion de consultation",
+      chatDescription: "Parlez-nous de vos besoins, de votre calendrier et de vos objectifs",
+      initialMessage:
+        "Bonjour ! Je suis votre consultant en développement propulsé par l'IA. Parlez-moi de votre idée de projet — que souhaitez-vous construire ? Je vous aiderai à rassembler les détails et à vous connecter à notre équipe.",
+      prompts: {
+        afterProjectType:
+          "Cela semble intéressant ! Quel est votre calendrier pour ce projet ? Avez-vous des préférences technologiques ?",
+        afterTimeline: "Parfait ! Quel est votre budget pour ce projet ?",
+        afterBudget: "Très bien ! Pouvez-vous décrire les objectifs ou fonctionnalités principaux ?",
+        thanks: "Merci ! Veuillez fournir vos coordonnées pour que notre équipe vous envoie une proposition.",
+        askMore: "Pouvez-vous m'en dire plus sur votre projet ?",
+      },
+      inputPlaceholder: "Décrivez votre idée de projet...",
+      contact: {
+        heading: "Mettons-vous en relation",
+        name: "Nom *",
+        email: "E-mail *",
+        company: "Société",
+        submit: "Envoyer la demande de consultation",
+      },
+      toast: {
+        missingInfoTitle: "Informations manquantes",
+        missingInfoDesc: "Veuillez indiquer votre nom et votre adresse e-mail.",
+        successTitle: "Merci !",
+        successDesc: "Votre demande a été envoyée. Nous vous contacterons sous 24 heures.",
+        errorTitle: "Erreur",
+        errorDesc: "Un problème est survenu. Veuillez réessayer.",
+      },
     },
   },
 };
