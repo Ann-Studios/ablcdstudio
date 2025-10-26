@@ -15,20 +15,42 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/i18n/LanguageProvider";
 
+type AIKey = "initial" | "afterProjectType" | "afterTimeline" | "afterBudget" | "thanks";
+
 interface Message {
   id: string;
   type: "user" | "ai";
-  content: string;
+  // For user messages we use `content`; for AI messages we prefer `aiKey` to support live translation
+  content?: string;
+  aiKey?: AIKey;
   timestamp: Date;
 }
 
 const AIConsultationSection = () => {
   const { t } = useI18n();
+
+  const getAIText = (key: AIKey) => {
+    switch (key) {
+      case "initial":
+        return t('ai.initialMessage');
+      case "afterProjectType":
+        return t('ai.prompts.afterProjectType');
+      case "afterTimeline":
+        return t('ai.prompts.afterTimeline');
+      case "afterBudget":
+        return t('ai.prompts.afterBudget');
+      case "thanks":
+        return t('ai.prompts.thanks');
+      default:
+        return t('ai.prompts.askMore');
+    }
+  };
+
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
       type: "ai",
-      content: t('ai.initialMessage'),
+      aiKey: "initial",
       timestamp: new Date(),
     },
   ]);
@@ -70,10 +92,11 @@ const AIConsultationSection = () => {
 
     // Simulate AI response
     setTimeout(() => {
+      const key = generateAIResponse(inputMessage, currentMessageCount);
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         type: "ai",
-        content: generateAIResponse(inputMessage, currentMessageCount),
+        aiKey: key ?? "afterProjectType",
         timestamp: new Date(),
       };
 
@@ -89,21 +112,12 @@ const AIConsultationSection = () => {
     setInputMessage("");
   };
 
-  const generateAIResponse = (userInput: string, messageCount: number): string => {
-    if (messageCount === 1) {
-      return t('ai.prompts.afterProjectType');
-    }
-    if (messageCount === 3) {
-      return t('ai.prompts.afterTimeline');
-    }
-    if (messageCount === 5) {
-      return t('ai.prompts.afterBudget');
-    }
-    if (messageCount >= 7) {
-      return t('ai.prompts.thanks');
-    }
-
-    return t('ai.prompts.askMore');
+  const generateAIResponse = (userInput: string, messageCount: number): AIKey | null => {
+    if (messageCount === 1) return "afterProjectType";
+    if (messageCount === 3) return "afterTimeline";
+    if (messageCount === 5) return "afterBudget";
+    if (messageCount >= 7) return "thanks";
+    return null;
   };
 
   const handleSubmitConsultation = async () => {
@@ -117,6 +131,12 @@ const AIConsultationSection = () => {
     }
 
     try {
+      // Prepare translated messages for persistence
+      const messagesForPersist = messages.map((m) => ({
+        ...m,
+        content: m.aiKey ? getAIText(m.aiKey) : m.content,
+      }));
+
       // Save to database
       const { error } = await supabase.from("consultations").insert([
         {
@@ -127,7 +147,7 @@ const AIConsultationSection = () => {
           budget: consultationData.budget,
           timeline: consultationData.timeline,
           description: consultationData.description,
-          conversation_messages: JSON.parse(JSON.stringify(messages)),
+          conversation_messages: messagesForPersist,
         },
       ]);
 
@@ -140,7 +160,7 @@ const AIConsultationSection = () => {
           email: userInfo.email,
           company: userInfo.company,
           ...consultationData,
-          conversationMessages: messages,
+          conversationMessages: messagesForPersist,
         },
       });
 
@@ -161,7 +181,7 @@ const AIConsultationSection = () => {
         {
           id: "1",
           type: "ai",
-          content: t('ai.initialMessage'),
+          aiKey: "initial",
           timestamp: new Date(),
         },
       ]);
@@ -230,7 +250,7 @@ const AIConsultationSection = () => {
                           : "bg-card text-card-foreground"
                         }`}
                     >
-                      <p className="text-sm">{message.content}</p>
+                      <p className="text-sm">{message.aiKey ? getAIText(message.aiKey) : message.content}</p>
                     </div>
                   </div>
                 ))}
