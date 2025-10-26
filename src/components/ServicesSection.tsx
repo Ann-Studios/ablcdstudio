@@ -1,49 +1,28 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code, Palette, Smartphone, Globe, Database, Zap } from "lucide-react";
-
-const services = [
-  {
-    icon: Code,
-    title: "Custom Development",
-    description: "Full-stack web applications built with modern technologies and best practices.",
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "Beautiful, intuitive interfaces that users love and convert visitors to customers.",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Apps",
-    description: "Native and cross-platform mobile applications for iOS and Android.",
-  },
-  {
-    icon: Globe,
-    title: "Web Solutions",
-    description: "Responsive websites, e-commerce platforms, and progressive web apps.",
-  },
-  {
-    icon: Database,
-    title: "Backend Systems",
-    description: "Scalable APIs, databases, and cloud infrastructure for your applications.",
-  },
-  {
-    icon: Zap,
-    title: "AI Integration",
-    description: "Intelligent features powered by machine learning and artificial intelligence.",
-  },
-];
+import { useI18n } from "@/i18n/LanguageProvider";
 
 const ServicesSection = () => {
+  const { t } = useI18n();
+
+  const services = [
+    { icon: Code, title: t('services.items.custom_dev.title'), description: t('services.items.custom_dev.description') },
+    { icon: Palette, title: t('services.items.uiux.title'), description: t('services.items.uiux.description') },
+    { icon: Smartphone, title: t('services.items.mobile.title'), description: t('services.items.mobile.description') },
+    { icon: Globe, title: t('services.items.web.title'), description: t('services.items.web.description') },
+    { icon: Database, title: t('services.items.backend.title'), description: t('services.items.backend.description') },
+    { icon: Zap, title: t('services.items.ai_integration.title'), description: t('services.items.ai_integration.description') },
+  ];
+
   return (
     <section className="py-24 bg-background/50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
-            Our Services
+            {t('services.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            From concept to deployment, we handle every aspect of your digital transformation
+            {t('services.subtitle')}
           </p>
         </div>
         

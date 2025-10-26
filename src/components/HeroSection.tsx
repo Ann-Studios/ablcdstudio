@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
+import { Link } from "react-router-dom";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 const HeroSection = () => {
+  const { t } = useI18n();
+
   const scrollToChat = () => {
     const chatSection = document.getElementById('ai-consultation');
     chatSection?.scrollIntoView({ behavior: 'smooth' });
@@ -29,16 +33,15 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-card/20 backdrop-blur-md border border-border/20 rounded-full px-4 py-2 mb-8">
             <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-sm text-muted-foreground">AI-Powered Development Consultation</span>
+            <span className="text-sm text-muted-foreground">{t('hero.badge')}</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent leading-tight">
-            Build Your Vision with AI-Guided Development
+            {t('hero.title')}
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Tell our AI about your project ideas and we'll transform them into reality. 
-            Get instant consultation and personalized development solutions.
+            {t('hero.description')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -49,7 +52,7 @@ const HeroSection = () => {
               className="text-lg px-8 py-4 h-auto animate-slide-up"
             >
               <MessageSquare className="w-5 h-5 mr-2" />
-              Start AI Consultation
+              {t('hero.cta.consult')}
             </Button>
             
             <Button 
@@ -57,8 +60,9 @@ const HeroSection = () => {
               size="lg"
               className="text-lg px-8 py-4 h-auto animate-slide-up"
               style={{ animationDelay: '0.2s' }}
+              asChild
             >
-              View Our Work
+              <Link to="/portfolio">{t('hero.cta.ourwork')}</Link>
             </Button>
           </div>
         </div>
