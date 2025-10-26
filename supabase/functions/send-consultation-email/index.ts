@@ -61,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "ABLCD Studio <onboarding@resend.dev>",
-        to: ["kafuiakakpo1@gmail.com"], // Replace with your actual email
+        to: ["kafui@ablcd.dev"], // Replace with your actual email
         subject: `New Project Consultation from ${name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
