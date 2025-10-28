@@ -14,6 +14,7 @@ import { Bot, Send, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/i18n/LanguageProvider";
+import { Link } from "react-router-dom";
 
 type AIKey = "initial" | "afterProjectType" | "afterTimeline" | "afterBudget" | "thanks";
 
@@ -64,6 +65,7 @@ const AIConsultationSection = () => {
     description: "",
   });
   const [showContactForm, setShowContactForm] = useState(false);
+  const [depositPaid, setDepositPaid] = useState(false);
   const { toast } = useToast();
 
   const handleSendMessage = () => {
@@ -111,6 +113,16 @@ const AIConsultationSection = () => {
 
     setInputMessage("");
   };
+
+  // Pick up deposit status if user completed payment on /payments
+  // We use a simple localStorage flag for this session
+  if (!depositPaid && typeof window !== 'undefined') {
+    const paid = localStorage.getItem('consultationDepositPaid');
+    if (paid === 'true') {
+      setDepositPaid(true);
+      localStorage.removeItem('consultationDepositPaid');
+    }
+  }
 
   const generateAIResponse = (userInput: string, messageCount: number): AIKey | null => {
     if (messageCount === 1) return "afterProjectType";
@@ -330,10 +342,40 @@ const AIConsultationSection = () => {
                       className="bg-background/50"
                     />
                   </div>
+
+                  {/* Payment section */}
+                  <div className="mb-6 p-4 rounded-md border border-border/30 bg-background/40">
+                    <h4 className="font-semibold mb-2">{t('ai.payment.heading')}</h4>
+                    <p className="text-sm text-muted-foreground mb-3">{t('ai.payment.note')}</p>
+                    {(() => {
+                      const parsed = parseFloat((consultationData.budget || '').toString().replace(/[^0-9.]/g, '')) || 0;
+                      const amount = Math.max(0, parsed * 0.2);
+                      return (
+                        <div className="flex items-center justify-between gap-4 flex-wrap">
+                          <div className="text-sm">
+                            <div className="text-muted-foreground">{t('ai.payment.amount')}</div>
+                            <div className="text-lg font-medium">{amount.toFixed(2)}</div>
+                          </div>
+                          {depositPaid ? (
+                            <div className="text-green-600 text-sm font-medium">{t('ai.payment.paid')}</div>
+                          ) : (
+                            <Button variant="hero" asChild>
+                              <Link to={`/payments?amount=${amount.toFixed(2)}&reason=Consultation%20Deposit`}>
+                                {t('ai.payment.payCta')}
+                              </Link>
+                            </Button>
+                          )}
+                        </div>
+                      );
+                    })()}
+                  </div>
+
                   <Button
                     onClick={handleSubmitConsultation}
                     variant="hero"
                     className="w-full"
+                    disabled={!depositPaid}
+                    title={!depositPaid ? t('ai.payment.required') : undefined}
                   >
                     {t('ai.contact.submit')}
                   </Button>

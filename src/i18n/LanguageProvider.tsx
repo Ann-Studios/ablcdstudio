@@ -86,6 +86,14 @@ const translations: Record<Language, Dict> = {
         company: "Company",
         submit: "Submit Consultation Request",
       },
+      payment: {
+        heading: "Deposit",
+        note: "20% deposit based on your budget",
+        amount: "Amount to pay",
+        payCta: "Pay 20% deposit",
+        paid: "Deposit paid",
+        required: "Please pay the 20% deposit before submitting.",
+      },
       toast: {
         missingInfoTitle: "Missing Information",
         missingInfoDesc: "Please provide your name and email address.",
@@ -183,6 +191,14 @@ const translations: Record<Language, Dict> = {
         email: "E-mail *",
         company: "Société",
         submit: "Envoyer la demande de consultation",
+      },
+      payment: {
+        heading: "Acompte",
+        note: "Acompte de 20% basé sur votre budget",
+        amount: "Montant à payer",
+        payCta: "Payer 20% d'acompte",
+        paid: "Acompte payé",
+        required: "Veuillez payer l'acompte de 20% avant de soumettre.",
       },
       toast: {
         missingInfoTitle: "Informations manquantes",

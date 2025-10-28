@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
 import { useI18n } from "@/i18n/LanguageProvider";
 
+const projects = [
+  {
+    title: "Worldsmith",
+    description: "Creative writing and publishing platform.",
+    image: "/worldsmith.png",
+  },
+  {
+    title: "100 Days Challenges",
+    description: "Track your 100‑day journey with posts and progress.",
+    image: "/portfolio/project-2.png",
+  },
+];
+
 const Portfolio = () => {
   const { t } = useI18n();
   return (
@@ -13,14 +26,23 @@ const Portfolio = () => {
           </p>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {/* Replace these placeholders with real portfolio items */}
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="rounded-lg border border-border/30 bg-card p-6">
-                <div className="h-40 w-full rounded-md bg-muted mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Project {i + 1}</h3>
-                <p className="text-sm text-muted-foreground">
-                  Brief description of the project and the value delivered.
-                </p>
+            {projects.map((p) => (
+              <div key={p.title} className="rounded-lg border border-border/30 bg-card overflow-hidden">
+                <div className="aspect-[16/9] w-full bg-muted">
+                  {/* Place image files at public/portfolio/project-1.png etc. */}
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="h-full w-full object-cover"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
+                  <p className="text-sm text-muted-foreground">{p.description}</p>
+                </div>
               </div>
             ))}
           </div>
