@@ -5,51 +5,87 @@ const projects = [
   {
     title: "Worldsmith",
     description: "Creative writing and publishing platform.",
-    image: "/worldsmith.png",
+    image: "/portfolio/worldsmith.png",
+    url: "https://worldsmith-blueprint.vercel.app/",
   },
   {
     title: "100 Days Challenges",
-    description: "Track your 100‑day journey with posts and progress.",
-    image: "/portfolio/project-2.png",
+    description: "Track your 100-day journey with posts and progress.",
+    image: "/portfolio/100days.png",
+    url: "https://100dayschallenges.vercel.app/",
+  },
+  {
+    title: "Gestion Librairie",
+    description: "Library management system for book inventory and lending.",
+    image: "/portfolio/gestion-librairie.png",
+    url: "https://gestionlibrairie-smoky.vercel.app/",
+  },
+  {
+    title: "Mobile Showcase",
+    description: "Portfolio of mobile applications.",
+    image: "/portfolio/mobile-showcase.png",
+    url: "https://mobile-showcase.vercel.app/",
   },
 ];
 
 const Portfolio = () => {
   const { t } = useI18n();
+
   return (
     <div className="min-h-screen bg-background">
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('portfolio.title')}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            {t("portfolio.title")}
+          </h1>
           <p className="text-muted-foreground mb-10 max-w-2xl">
-            {t('portfolio.subtitle')}
+            {t("portfolio.subtitle")}
           </p>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((p) => (
-              <div key={p.title} className="rounded-lg border border-border/30 bg-card overflow-hidden">
+              <div
+                key={p.title}
+                className="rounded-lg border border-border/30 bg-card overflow-hidden flex flex-col"
+              >
                 <div className="aspect-[16/9] w-full bg-muted">
-                  {/* Place image files at public/portfolio/project-1.png etc. */}
                   <img
                     src={p.image}
                     alt={p.title}
                     className="h-full w-full object-cover"
                     onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).style.display = 'none';
+                      (e.currentTarget as HTMLImageElement).style.display = "none";
                     }}
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
-                  <p className="text-sm text-muted-foreground">{p.description}</p>
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      {p.description}
+                    </p>
+                  </div>
+                  {p.url && (
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-background transition-colors"
+                    >
+                      View Project
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
           <div className="mt-10">
-            <Link to="/" className="text-primary underline-offset-4 hover:underline">
-              {t('portfolio.back')}
+            <Link
+              to="/"
+              className="text-primary underline-offset-4 hover:underline"
+            >
+              {t("portfolio.back")}
             </Link>
           </div>
         </div>
