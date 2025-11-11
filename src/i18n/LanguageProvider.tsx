@@ -56,6 +56,7 @@ const translations: Record<Language, Dict> = {
       title: "Payments",
       subtitle:
         "Complete your payment securely using your preferred method.",
+      pay: "Pay",
       back: "← Back to Home",
     },
     notFound: {
@@ -161,6 +162,7 @@ const translations: Record<Language, Dict> = {
       title: "Paiements",
       subtitle:
         "Complétez votre paiement en toute sécurité avec votre méthode préférée.",
+      pay: "Payer",
       back: "← Retour à l'accueil",
     },
     notFound: {

@@ -97,7 +97,7 @@ const Payments = () => {
 
             {isXof ? (
               <Button onClick={openPayment} variant="hero" disabled={payDisabled || !publicKey}>
-                {amount > 0 ? `Pay ${amount.toFixed(2)} ${currency.toUpperCase()}` : t('ai.payment.payCta')}
+                {amount > 0 ? `${t('payments.pay')} ${amount.toFixed(2)} ${currency.toUpperCase()}` : t('ai.payment.payCta')}
               </Button>
             ) : showPayPal ? (
               <PayPalScriptProvider options={{ clientId: paypalClientId, currency: currency.toUpperCase(), locale: paypalLocale }}>
