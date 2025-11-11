@@ -55,8 +55,7 @@ const translations: Record<Language, Dict> = {
     payments: {
       title: "Payments",
       subtitle:
-        "This is a placeholder payments page. Integrate your preferred provider (Stripe, Paystack, Flutterwave, etc.).",
-      coming: "Coming soon: secure checkout, invoices, and subscriptions.",
+        "Complete your payment securely using your preferred method.",
       back: "← Back to Home",
     },
     notFound: {
@@ -161,8 +160,7 @@ const translations: Record<Language, Dict> = {
     payments: {
       title: "Paiements",
       subtitle:
-        "Ceci est une page de paiement temporaire. Intégrez votre prestataire préféré (Stripe, Paystack, Flutterwave, etc.).",
-      coming: "Bientôt disponible : paiement sécurisé, factures et abonnements.",
+        "Complétez votre paiement en toute sécurité avec votre méthode préférée.",
       back: "← Retour à l'accueil",
     },
     notFound: {
