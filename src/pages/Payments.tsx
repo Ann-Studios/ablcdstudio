@@ -15,7 +15,7 @@ declare global {
 const SUPPORTED_CURRENCIES = ["xof", "usd", "eur", "gbp", "ngn", "ghs", "xaf", "cad"] as const;
 
 const Payments = () => {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const amount = parseFloat(params.get("amount") || "0");
@@ -29,6 +29,9 @@ const Payments = () => {
   const callbackUrl = useMemo(() => window.location.href, []);
   const publicKey = import.meta.env.VITE_KKIAPAY_PUBLIC_KEY as string | undefined;
   const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID as string | undefined;
+  
+  // Map site language to PayPal locale codes
+  const paypalLocale = lang === "fr" ? "fr_FR" : "en_US";
 
   // Attach success listener to mark the deposit as paid and redirect back
   useEffect(() => {
@@ -97,7 +100,7 @@ const Payments = () => {
                 {amount > 0 ? `Pay ${amount.toFixed(2)} ${currency.toUpperCase()}` : t('ai.payment.payCta')}
               </Button>
             ) : showPayPal ? (
-              <PayPalScriptProvider options={{ clientId: paypalClientId, currency: currency.toUpperCase() }}>
+              <PayPalScriptProvider options={{ clientId: paypalClientId, currency: currency.toUpperCase(), locale: paypalLocale }}>
                 <PayPalButtons
                   style={{ layout: "vertical" }}
                   createOrder={(data, actions) => {
