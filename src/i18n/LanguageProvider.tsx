@@ -50,6 +50,25 @@ const translations: Record<Language, Dict> = {
     portfolio: {
       title: "Our Portfolio",
       subtitle: "A curated selection of projects and case studies showcasing our work.",
+      viewProject: "View Project",
+      projects: {
+        worldsmith: {
+          title: "Worldsmith",
+          description: "Creative writing and publishing platform.",
+        },
+        hundredDays: {
+          title: "100 Days Challenges",
+          description: "Track your 100-day journey with posts and progress.",
+        },
+        gestionLibrairie: {
+          title: "Gestion Librairie",
+          description: "Library management system for book inventory and lending.",
+        },
+        mobileShowcase: {
+          title: "Mobile Showcase",
+          description: "Portfolio of mobile applications.",
+        },
+      },
       back: "← Back to Home",
     },
     payments: {
@@ -156,6 +175,25 @@ const translations: Record<Language, Dict> = {
       title: "Notre portfolio",
       subtitle:
         "Une sélection de projets et d'études de cas mettant en valeur notre travail.",
+      viewProject: "Voir le projet",
+      projects: {
+        worldsmith: {
+          title: "Worldsmith",
+          description: "Plateforme d'écriture créative et de publication.",
+        },
+        hundredDays: {
+          title: "100 Days Challenges",
+          description: "Suivez votre parcours de 100 jours avec des publications et des progrès.",
+        },
+        gestionLibrairie: {
+          title: "Gestion Librairie",
+          description: "Système de gestion de bibliothèque pour l'inventaire et le prêt de livres.",
+        },
+        mobileShowcase: {
+          title: "Mobile Showcase",
+          description: "Portfolio d'applications mobiles.",
+        },
+      },
       back: "← Retour à l'accueil",
     },
     payments: {

@@ -1,28 +1,24 @@
 import { Link } from "react-router-dom";
 import { useI18n } from "@/i18n/LanguageProvider";
 
-const projects = [
+const projectsData = [
   {
-    title: "Worldsmith",
-    description: "Creative writing and publishing platform.",
+    key: "worldsmith",
     image: "/portfolio/worldsmith.png",
     url: "https://worldsmith-blueprint.vercel.app/",
   },
   {
-    title: "100 Days Challenges",
-    description: "Track your 100-day journey with posts and progress.",
+    key: "hundredDays",
     image: "/portfolio/100days.png",
     url: "https://100dayschallenges.vercel.app/",
   },
   {
-    title: "Gestion Librairie",
-    description: "Library management system for book inventory and lending.",
+    key: "gestionLibrairie",
     image: "/portfolio/gestion-librairie.png",
     url: "https://gestionlibrairie-smoky.vercel.app/",
   },
   {
-    title: "Mobile Showcase",
-    description: "Portfolio of mobile applications.",
+    key: "mobileShowcase",
     image: "/portfolio/mobile-showcase.png",
     url: "https://mobile-showcase.vercel.app/",
   },
@@ -43,15 +39,15 @@ const Portfolio = () => {
           </p>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((p) => (
+            {projectsData.map((p) => (
               <div
-                key={p.title}
+                key={p.key}
                 className="rounded-lg border border-border/30 bg-card overflow-hidden flex flex-col"
               >
                 <div className="aspect-[16/9] w-full bg-muted">
                   <img
                     src={p.image}
-                    alt={p.title}
+                    alt={t(`portfolio.projects.${p.key}.title`)}
                     className="h-full w-full object-cover"
                     onError={(e) => {
                       (e.currentTarget as HTMLImageElement).style.display = "none";
@@ -60,9 +56,9 @@ const Portfolio = () => {
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
+                    <h3 className="text-lg font-semibold mb-2">{t(`portfolio.projects.${p.key}.title`)}</h3>
                     <p className="text-sm text-muted-foreground mb-4">
-                      {p.description}
+                      {t(`portfolio.projects.${p.key}.description`)}
                     </p>
                   </div>
                   {p.url && (
@@ -72,7 +68,7 @@ const Portfolio = () => {
                       rel="noopener noreferrer"
                       className="inline-block px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-background transition-colors"
                     >
-                      View Project
+                      {t("portfolio.viewProject")}
                     </a>
                   )}
                 </div>
