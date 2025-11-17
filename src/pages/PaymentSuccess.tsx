@@ -6,6 +6,15 @@ const PaymentSuccess = () => {
   const [params] = useSearchParams();
   const navigate = useNavigate();
 
+  // Google Ads Conversion Tracking
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag("event", "conversion", {
+        send_to: "AW-17738011487",
+      });
+    }
+  }, []);
+
   useEffect(() => {
     const verify = async () => {
       const session_id = params.get("session_id");
