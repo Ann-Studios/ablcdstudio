@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useI18n } from "@/i18n/LanguageProvider";
-import { useEffect } from "react";
 
 const projectsData = [
   {
@@ -28,13 +27,13 @@ const projectsData = [
 const Portfolio = () => {
   const { t } = useI18n();
 
-  useEffect(() => {
+  const handleProjectClick = () => {
     if (window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-17738011487',
+      window.gtag("event", "conversion", {
+        send_to: "AW-17738011487/GT-KTB4R67J",
       });
     }
-  }, []);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -59,22 +58,28 @@ const Portfolio = () => {
                     alt={t(`portfolio.projects.${p.key}.title`)}
                     className="h-full w-full object-cover"
                     onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).style.display = "none";
+                      e.currentTarget.style.display = "none";
                     }}
                   />
                 </div>
+
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold mb-2">{t(`portfolio.projects.${p.key}.title`)}</h3>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {t(`portfolio.projects.${p.key}.title`)}
+                    </h3>
+
                     <p className="text-sm text-muted-foreground mb-4">
                       {t(`portfolio.projects.${p.key}.description`)}
                     </p>
                   </div>
+
                   {p.url && (
                     <a
                       href={p.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={handleProjectClick}
                       className="inline-block px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-background transition-colors"
                     >
                       {t("portfolio.viewProject")}
