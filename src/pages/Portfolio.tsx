@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useI18n } from "@/i18n/LanguageProvider";
+import { useEffect } from "react";
 
 const projectsData = [
   {
@@ -26,6 +27,14 @@ const projectsData = [
 
 const Portfolio = () => {
   const { t } = useI18n();
+
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17738011487',
+      });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
