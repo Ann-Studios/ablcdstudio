@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/i18n/LanguageProvider";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 type AIKey = "initial" | "afterProjectType" | "afterTimeline" | "afterBudget" | "thanks";
 
@@ -77,6 +78,14 @@ const AIConsultationSection = () => {
       content: inputMessage,
       timestamp: new Date(),
     };
+
+    useEffect(() => {
+      if (window.gtag) {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-17738011487',
+        });
+      }
+    }, []);
 
     setMessages((prev) => [...prev, userMessage]);
 

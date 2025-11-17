@@ -43,6 +43,14 @@ const Payments = () => {
     }
   }, [navigate]);
 
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17738011487',
+      });
+    }
+  }, []);
+
   const openPayment = () => {
     if (!publicKey) {
       console.error("Missing VITE_KKIAPAY_PUBLIC_KEY");
