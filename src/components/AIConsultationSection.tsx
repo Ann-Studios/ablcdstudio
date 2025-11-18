@@ -156,6 +156,7 @@ const AIConsultationSection = () => {
       const messagesForPersist = messages.map((m) => ({
         ...m,
         content: m.aiKey ? getAIText(m.aiKey) : m.content,
+        timestamp: m.timestamp.toISOString(),
       }));
 
       // Save to database

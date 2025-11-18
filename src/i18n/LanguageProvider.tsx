@@ -2,7 +2,8 @@ import React, { createContext, useContext, useMemo, useState, useEffect } from "
 
 export type Language = "en" | "fr";
 
-type Dict = Record<string, string | Dict>;
+type DictValue = string | { [key: string]: DictValue };
+type Dict = Record<string, DictValue>;
 
 const translations: Record<Language, Dict> = {
   en: {
@@ -121,6 +122,13 @@ const translations: Record<Language, Dict> = {
         errorTitle: "Error",
         errorDesc: "Something went wrong. Please try again.",
       },
+    },
+    footer: {
+      rights: "All rights reserved.",
+      legal: "Legal Mention",
+      privacy: "Privacy Policy",
+      confidentiality: "Confidentiality Policy",
+      terms: "Terms of Service",
     },
   },
   fr: {
@@ -246,6 +254,13 @@ const translations: Record<Language, Dict> = {
         errorTitle: "Erreur",
         errorDesc: "Un problème est survenu. Veuillez réessayer.",
       },
+    },
+    footer: {
+      rights: "Tous droits réservés.",
+      legal: "Mentions légales",
+      privacy: "Politique de confidentialité",
+      confidentiality: "Politique de confidentialité",
+      terms: "Conditions d'utilisation",
     },
   },
 };

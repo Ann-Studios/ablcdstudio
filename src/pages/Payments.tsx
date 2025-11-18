@@ -3,6 +3,7 @@ import { useI18n } from "@/i18n/LanguageProvider";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import Footer from "@/components/Footer";
 
 // Kkiapay globals provided by the SDK script
 declare global {
@@ -76,8 +77,8 @@ const Payments = () => {
   const showPayPal = !isXof && paypalClientId && amount > 0;
 
   return (
-    <div className="min-h-screen bg-background">
-      <section className="py-20">
+    <div className="min-h-screen bg-background flex flex-col">
+      <section className="py-20 flex-1">
         <div className="container mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('payments.title')}</h1>
           <p className="text-muted-foreground mb-10 max-w-2xl">
@@ -152,6 +153,7 @@ const Payments = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
