@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useI18n } from "@/i18n/LanguageProvider";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 const projectsData = [
   {
@@ -38,7 +39,8 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <section className="py-20 flex-1">
+      <Navbar />
+      <section className="py-20 flex-1 pt-24">
         <div className="container mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             {t("portfolio.title")}
@@ -92,12 +94,12 @@ const Portfolio = () => {
           </div>
 
           <div className="mt-10">
-            <Link
+            {/*<Link
               to="/"
               className="text-primary underline-offset-4 hover:underline"
             >
               {t("portfolio.back")}
-            </Link>
+            </Link>*/}
           </div>
         </div>
       </section>

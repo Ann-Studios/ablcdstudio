@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 // Kkiapay globals provided by the SDK script
 declare global {
@@ -30,7 +31,7 @@ const Payments = () => {
   const callbackUrl = useMemo(() => window.location.href, []);
   const publicKey = import.meta.env.VITE_KKIAPAY_PUBLIC_KEY as string | undefined;
   const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID as string | undefined;
-  
+
   // Map site language to PayPal locale codes
   const paypalLocale = lang === "fr" ? "fr_FR" : "en_US";
 
@@ -38,7 +39,7 @@ const Payments = () => {
   useEffect(() => {
     if (window.addKkiapayListener) {
       window.addKkiapayListener("success", () => {
-        try { localStorage.setItem("consultationDepositPaid", "true"); } catch {}
+        try { localStorage.setItem("consultationDepositPaid", "true"); } catch { }
         navigate("/#ai-consultation", { replace: true });
       });
     }
@@ -78,7 +79,8 @@ const Payments = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <section className="py-20 flex-1">
+      <Navbar />
+      <section className="py-20 flex-1 pt-24">
         <div className="container mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('payments.title')}</h1>
           <p className="text-muted-foreground mb-10 max-w-2xl">
@@ -128,7 +130,7 @@ const Payments = () => {
                   }}
                   onApprove={(data, actions) => {
                     return actions.order!.capture().then(() => {
-                      try { localStorage.setItem("consultationDepositPaid", "true"); } catch {}
+                      try { localStorage.setItem("consultationDepositPaid", "true"); } catch { }
                       navigate("/#ai-consultation", { replace: true });
                     });
                   }}
@@ -139,7 +141,7 @@ const Payments = () => {
               </PayPalScriptProvider>
             ) : (
               <p className="text-sm text-amber-600 dark:text-amber-400">
-                {!paypalClientId 
+                {!paypalClientId
                   ? "Payment configuration missing. Please contact support."
                   : "Please select a valid currency and amount."}
               </p>

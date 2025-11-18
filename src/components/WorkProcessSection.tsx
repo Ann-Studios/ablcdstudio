@@ -1,10 +1,7 @@
-import { Link } from "react-router-dom";
 import { useI18n } from "@/i18n/LanguageProvider";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import { CheckCircle2 } from "lucide-react";
 
-const WorkProcess = () => {
+const WorkProcessSection = () => {
   const { t } = useI18n();
 
   const steps = [
@@ -17,19 +14,19 @@ const WorkProcess = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
-      <div className="container mx-auto px-4 py-16 flex-1 pt-24">
-        {/*<Link to="/" className="text-sm text-muted-foreground hover:text-foreground mb-8 inline-block">
-          {t("processPage.back")}
-        </Link>*/}
-
-        <h1 className="text-4xl font-bold mb-4">
-          {t("processPage.title")}
-        </h1>
-        <p className="text-muted-foreground mb-16 max-w-2xl">
-          {t("processPage.subtitle")}
-        </p>
+    <section
+      id="work-process"
+      className="py-24 bg-gradient-to-b from-background/50 to-background"
+    >
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
+            {t("processPage.title")}
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            {t("processPage.subtitle")}
+          </p>
+        </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="space-y-12">
@@ -38,14 +35,14 @@ const WorkProcess = () => {
                 {index !== steps.length - 1 && (
                   <div className="absolute left-6 top-16 bottom-0 w-0.5 bg-border" />
                 )}
-
+                
                 <div className="flex gap-6">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg">
                       {step.icon}
                     </div>
                   </div>
-
+                  
                   <div className="flex-1 pb-8">
                     <h3 className="text-2xl font-semibold mb-3 flex items-center gap-2">
                       {t(`processPage.steps.${step.key}.title`)}
@@ -61,9 +58,9 @@ const WorkProcess = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </section>
   );
 };
 
-export default WorkProcess;
+export default WorkProcessSection;
+

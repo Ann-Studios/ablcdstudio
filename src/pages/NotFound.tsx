@@ -2,6 +2,7 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useI18n } from "@/i18n/LanguageProvider";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 const NotFound = () => {
   const location = useLocation();
@@ -13,7 +14,8 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-100">
-      <div className="flex-1 flex items-center justify-center">
+      <Navbar />
+      <div className="flex-1 flex items-center justify-center pt-24">
         <div className="text-center">
           <h1 className="mb-4 text-4xl font-bold">404</h1>
           <p className="mb-4 text-xl text-gray-600">{t('notFound.subtitle')}</p>

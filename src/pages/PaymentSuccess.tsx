@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import Navbar from "@/components/Navbar";
 
 const PaymentSuccess = () => {
   const [params] = useSearchParams();
@@ -35,11 +36,14 @@ const PaymentSuccess = () => {
   }, [params, navigate]);
 
   return (
-    <div className="min-h-screen grid place-items-center">
-      <div className="text-center space-y-3">
-        <h1 className="text-3xl font-bold">Payment successful</h1>
-        <p className="text-muted-foreground">Finalizing your consultation...</p>
-        <Link to="/" className="text-primary underline-offset-4 hover:underline">Go home</Link>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="flex-1 grid place-items-center pt-24">
+        <div className="text-center space-y-3">
+          <h1 className="text-3xl font-bold">Payment successful</h1>
+          <p className="text-muted-foreground">Finalizing your consultation...</p>
+          <Link to="/" className="text-primary underline-offset-4 hover:underline">Go home</Link>
+        </div>
       </div>
     </div>
   );
