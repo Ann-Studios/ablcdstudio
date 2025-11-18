@@ -46,7 +46,9 @@ Deno.serve(async (req) => {
       status: 200,
     });
   } catch (e) {
-    return new Response(JSON.stringify({ error: String(e?.message ?? e) }), {
+    console.error("Error creating deposit session:", e);
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    return new Response(JSON.stringify({ error: errorMessage }), {
       headers: { "Content-Type": "application/json", ...corsHeaders },
       status: 400,
     });
