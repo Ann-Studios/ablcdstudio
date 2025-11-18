@@ -129,6 +129,76 @@ const translations: Record<Language, Dict> = {
       privacy: "Privacy Policy",
       confidentiality: "Confidentiality Policy",
       terms: "Terms of Service",
+      faq: "FAQ",
+      services: "Services",
+      process: "Work Process",
+    },
+    servicesPage: {
+      title: "Our Services",
+      subtitle: "Comprehensive development solutions tailored to your needs",
+      back: "← Back to Home",
+    },
+    processPage: {
+      title: "Our Work Process",
+      subtitle: "How we transform your ideas into reality",
+      back: "← Back to Home",
+      steps: {
+        discovery: {
+          title: "Discovery & Planning",
+          description: "We start by understanding your vision, goals, and requirements through detailed consultation.",
+        },
+        design: {
+          title: "Design & Prototyping",
+          description: "Our designers create intuitive interfaces and interactive prototypes for your approval.",
+        },
+        development: {
+          title: "Development",
+          description: "Our developers build your solution using modern technologies and best practices.",
+        },
+        testing: {
+          title: "Testing & QA",
+          description: "Rigorous testing ensures quality, performance, and security standards are met.",
+        },
+        deployment: {
+          title: "Deployment",
+          description: "We launch your application and ensure everything runs smoothly in production.",
+        },
+        support: {
+          title: "Support & Maintenance",
+          description: "Ongoing support and updates to keep your application running optimally.",
+        },
+      },
+    },
+    faqPage: {
+      title: "Frequently Asked Questions",
+      subtitle: "Find answers to common questions about our services",
+      back: "← Back to Home",
+      questions: {
+        q1: {
+          question: "How long does a typical project take?",
+          answer: "Project timelines vary based on complexity. A simple website takes 2-4 weeks, while complex applications can take 3-6 months. We'll provide a detailed timeline during consultation.",
+        },
+        q2: {
+          question: "What technologies do you use?",
+          answer: "We use modern, industry-standard technologies including React, Node.js, TypeScript, and cloud platforms like AWS and Supabase. We choose the best stack for your specific needs.",
+        },
+        q3: {
+          question: "Do you provide post-launch support?",
+          answer: "Yes! We offer maintenance packages and ongoing support to ensure your application stays updated, secure, and performs optimally.",
+        },
+        q4: {
+          question: "What is your pricing model?",
+          answer: "We offer flexible pricing based on project scope. After understanding your requirements, we provide a detailed quote. We require a 20% deposit to begin work.",
+        },
+        q5: {
+          question: "Can you work with existing codebases?",
+          answer: "Absolutely! We can take over existing projects, add features, fix bugs, or modernize legacy applications.",
+        },
+        q6: {
+          question: "Do you sign NDAs?",
+          answer: "Yes, we're happy to sign non-disclosure agreements to protect your intellectual property and confidential information.",
+        },
+      },
     },
   },
   fr: {
@@ -261,6 +331,76 @@ const translations: Record<Language, Dict> = {
       privacy: "Politique de confidentialité",
       confidentiality: "Politique de confidentialité",
       terms: "Conditions d'utilisation",
+      faq: "FAQ",
+      services: "Services",
+      process: "Processus de travail",
+    },
+    servicesPage: {
+      title: "Nos services",
+      subtitle: "Solutions de développement complètes adaptées à vos besoins",
+      back: "← Retour à l'accueil",
+    },
+    processPage: {
+      title: "Notre processus de travail",
+      subtitle: "Comment nous transformons vos idées en réalité",
+      back: "← Retour à l'accueil",
+      steps: {
+        discovery: {
+          title: "Découverte et planification",
+          description: "Nous commençons par comprendre votre vision, vos objectifs et vos exigences grâce à une consultation détaillée.",
+        },
+        design: {
+          title: "Conception et prototypage",
+          description: "Nos designers créent des interfaces intuitives et des prototypes interactifs pour votre approbation.",
+        },
+        development: {
+          title: "Développement",
+          description: "Nos développeurs construisent votre solution en utilisant des technologies modernes et les meilleures pratiques.",
+        },
+        testing: {
+          title: "Tests et assurance qualité",
+          description: "Des tests rigoureux garantissent que les normes de qualité, de performance et de sécurité sont respectées.",
+        },
+        deployment: {
+          title: "Déploiement",
+          description: "Nous lançons votre application et nous assurons que tout fonctionne parfaitement en production.",
+        },
+        support: {
+          title: "Support et maintenance",
+          description: "Support continu et mises à jour pour maintenir votre application en fonctionnement optimal.",
+        },
+      },
+    },
+    faqPage: {
+      title: "Questions fréquemment posées",
+      subtitle: "Trouvez des réponses aux questions courantes sur nos services",
+      back: "← Retour à l'accueil",
+      questions: {
+        q1: {
+          question: "Combien de temps dure un projet typique ?",
+          answer: "Les délais des projets varient selon la complexité. Un site web simple prend 2 à 4 semaines, tandis que les applications complexes peuvent prendre 3 à 6 mois. Nous fournirons un calendrier détaillé lors de la consultation.",
+        },
+        q2: {
+          question: "Quelles technologies utilisez-vous ?",
+          answer: "Nous utilisons des technologies modernes et standard de l'industrie, notamment React, Node.js, TypeScript et des plateformes cloud comme AWS et Supabase. Nous choisissons la meilleure stack pour vos besoins spécifiques.",
+        },
+        q3: {
+          question: "Fournissez-vous un support après le lancement ?",
+          answer: "Oui ! Nous proposons des forfaits de maintenance et un support continu pour garantir que votre application reste à jour, sécurisée et performante.",
+        },
+        q4: {
+          question: "Quel est votre modèle de tarification ?",
+          answer: "Nous offrons une tarification flexible basée sur la portée du projet. Après avoir compris vos besoins, nous fournissons un devis détaillé. Nous demandons un acompte de 20% pour commencer les travaux.",
+        },
+        q5: {
+          question: "Pouvez-vous travailler avec des bases de code existantes ?",
+          answer: "Absolument ! Nous pouvons reprendre des projets existants, ajouter des fonctionnalités, corriger des bugs ou moderniser des applications héritées.",
+        },
+        q6: {
+          question: "Signez-vous des NDA ?",
+          answer: "Oui, nous sommes heureux de signer des accords de non-divulgation pour protéger votre propriété intellectuelle et vos informations confidentielles.",
+        },
+      },
     },
   },
 };

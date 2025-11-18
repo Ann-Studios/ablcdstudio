@@ -11,6 +11,9 @@ import LegalMention from "./pages/LegalMention";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ConfidentialityPolicy from "./pages/ConfidentialityPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import ServicesPage from "./pages/ServicesPage";
+import WorkProcess from "./pages/WorkProcess";
+import FAQ from "./pages/FAQ";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
@@ -30,6 +33,9 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/payments" element={<Payments />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/work-process" element={<WorkProcess />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/legal-mention" element={<LegalMention />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/confidentiality-policy" element={<ConfidentialityPolicy />} />

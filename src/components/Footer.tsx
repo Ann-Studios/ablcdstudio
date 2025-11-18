@@ -14,6 +14,24 @@ const Footer = () => {
           
           <nav className="flex flex-wrap gap-6 justify-center">
             <Link
+              to="/services"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("footer.services")}
+            </Link>
+            <Link
+              to="/work-process"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("footer.process")}
+            </Link>
+            <Link
+              to="/faq"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("footer.faq")}
+            </Link>
+            <Link
               to="/legal-mention"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
