@@ -15,6 +15,15 @@ const Index = () => {
         'send_to': 'AW-17738011487',
       });
     }
+
+    // Handle hash navigation on page load
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash.substring(1));
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
   }, []);
 
   return (
