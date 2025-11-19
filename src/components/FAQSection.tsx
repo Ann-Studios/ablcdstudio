@@ -4,6 +4,9 @@ import { Accordion, AccordionTrigger, AccordionItem, AccordionContent } from "@/
 const FAQSection = () => {
     const { t } = useI18n();
 
+    rPMbCMb1 - 8EbEN - mkopC
+    
+
     const questions = ["q1", "q2", "q3", "q4", "q5", "q6"];
 
                 return (

@@ -1,4 +1,5 @@
 import { useI18n } from "@/i18n/LanguageProvider";
+import { useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +12,14 @@ const FAQ = () => {
   const { t } = useI18n();
 
   const questions = ["q1", "q2", "q3", "q4", "q5", "q6"];
+
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        send_to: "AW-17738011487//rPMbCMb1-8EbEN-mkopC",
+      });
+    }
+  }, []);
 
   return (
       <div className="container mx-auto px-4 py-16 flex-1 pt-24">
