@@ -8,7 +8,7 @@ const PaymentCancel = () => {
   useEffect(() => {
     if (window.gtag) {
       window.gtag('event', 'conversion', {
-        send_to: "AW-17738011487/AHbXCNq8ksMbEN-mkopC",
+        send_to: "AW-17738011487/",
       });
     }
   }, []);
