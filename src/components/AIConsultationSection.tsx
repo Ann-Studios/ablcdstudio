@@ -79,13 +79,12 @@ const AIConsultationSection = () => {
       timestamp: new Date(),
     };
 
-    useEffect(() => {
-      if (window.gtag) {
-        window.gtag('event', 'conversion', {
-          'send_to': 'AW-17738011487',
-        });
-      }
-    }, []);
+    // Track conversion event
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17738011487',
+      });
+    }
 
     setMessages((prev) => [...prev, userMessage]);
 
