@@ -32,10 +32,13 @@ const Portfolio = () => {
   const handleProjectClick = () => {
     if (window.gtag) {
       window.gtag("event", "conversion", {
-        send_to: "AW-17738011487/GT-KTB4R67J",
+        send_to: 'AW-17738011487/R8xaCMKkmcMbEN-mkopC',
+        'value': 1.0,
+        'currency': 'USD'
       });
     }
   };
+
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
