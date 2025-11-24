@@ -33,7 +33,7 @@ const LegalMention = () => {
 
               <h2>Hébergement</h2>
               <p>
-                Ce site est hébergé par Lovable<br />
+                Ce site est hébergé par Vercel<br />
                 [Adresse de l'hébergeur]
               </p>
             </>
@@ -51,7 +51,7 @@ const LegalMention = () => {
 
               <h2>Hosting</h2>
               <p>
-                This site is hosted by Lovable<br />
+                This site is hosted by Vercel<br />
                 [Host address]
               </p>
             </>
