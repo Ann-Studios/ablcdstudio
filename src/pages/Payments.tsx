@@ -68,7 +68,6 @@ const Payments = () => {
     window.openKkiapayWidget({
       amount: xofAmountInt,
       key: publicKey,
-      sandbox: true,
       callback: callbackUrl,
     });
   };
