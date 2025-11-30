@@ -48,7 +48,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to the user
     await resend.emails.send({
-      from: "ABLCD Studios <onboarding@resend.dev>",
+      from: "ABLCD Studios <contact@ablcdstudios.dev>",
       to: [email],
       subject: "We received your message!",
       html: `
