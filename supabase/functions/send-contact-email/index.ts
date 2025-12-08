@@ -29,7 +29,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to your business email
     const emailResponse = await resend.emails.send({
-      from: "ABLCD Studios Contact <onboarding@resend.dev>",
+      from: "ABLCD Studios Contact <noreply@ablcdstudios.dev>",
       to: ["contact@ablcdstudios.dev"],
       replyTo: email,
       subject: `Contact Form: ${subject}`,
